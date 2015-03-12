@@ -1,5 +1,7 @@
 package cs601.blkqueue;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Map;
 
 public class TestRig {
@@ -37,7 +39,9 @@ public class TestRig {
 		long t = stop - start;
 		double tms = t / 1000.0 / 1000;
 		double ts = t / 1000.0 / 1000 / 1000;
-		System.out.printf("%.3fms %.1f events / second\n", tms, (N/(float)ts));
+		System.out.printf("%.3fms %s events / second\n",
+						  tms,
+						  NumberFormat.getNumberInstance(Locale.US).format((N/(float)ts)));
 
 		System.out.println("Producer: "+producerObserver);
 		System.out.println("Consumer: " +consumerObserver);

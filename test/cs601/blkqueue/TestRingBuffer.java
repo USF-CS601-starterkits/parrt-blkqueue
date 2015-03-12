@@ -2,13 +2,19 @@ package cs601.blkqueue;
 
 /*
 from terminal not intellij seems faster, more stable.
-jdk 7 N = 80,000,000 -server
-4187.161ms 19106024.0 events / second
-Producer: (0 blocked + 0 waiting + 1911 sleeping) / 6127 samples = 31.19% wasted
-Consumer: (0 blocked + 0 waiting + 2358 sleeping) / 6129 samples = 38.47% wasted
+jdk 8 N = 100_000_000
+3164.566ms 31,599,910 events / second
+Producer: (0 blocked + 0 waiting + 2077 sleeping) / 4719 samples = 44.01% wasted
+Consumer: (0 blocked + 0 waiting + 2181 sleeping) / 4712 samples = 46.29% wasted
+
+seen as low as:
+
+6631.473ms 15,079,606 events / second
+Producer: (0 blocked + 0 waiting + 405 sleeping) / 9490 samples = 4.27% wasted
+Consumer: (0 blocked + 0 waiting + 2712 sleeping) / 9469 samples = 28.64% wasted
  */
 public class TestRingBuffer {
-	public static final int N = 80000000;
+	public static final int N = 100_000_000;
 
 	public static void main(String[] args) throws Exception {
 		RingBuffer<Integer> queue = new RingBuffer<Integer>(1024);
